@@ -66,3 +66,29 @@ int MaxValue=Convert.ToInt32(dt.AsEnumerable().Max(Function(row) row("Column2"))
 
 System.Text.RegularExpressions.Regex.Replace(Input variable, "[^\x20-\x7F]", "")
 
+# groupby or groupby and calculate sum
+
+datatable dta
+
+First group the datatable based on ID by using below Query and assign it to dt1
+dt1=(From p In dta.Select()
+Group p by ID=p.Item(“ID”).ToString Into Group
+Select Group(0)).ToArray.CopyToDataTable()
+
+Now take only two columns by using below query
+dt1=dt1.DefaultView.ToTable(False,“ID”,“Name”)
+
+Now Add one datacolumn to dt1 by using add datacolumn activity and give name Amount to that column
+
+Then create one list of strings ListA
+
+Then use this query
+ListA=(From p In dta.Select()
+Group p By ID=p.Item(“ID”).ToString Into GroupA=Group
+Select Convert.ToString(GroupA.Sum(Function(x) Convert.ToDouble(x.Item(“Amount”).ToString)))).ToList()
+
+Next Run one Foreach loop for dt1
+
+Inside for each use one assign activity
+row(“Amount”)=ListA(dt1.Rows.IndexOf(row)).ToString
+
