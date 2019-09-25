@@ -92,10 +92,10 @@ Next Run one Foreach loop for dt1
 Inside for each use one assign activity
 row(“Amount”)=ListA(dt1.Rows.IndexOf(row)).ToString
 
-#Group by without sum
+# Group by without sum
 (From p In DT.AsEnumerable() Group By x= New With { Key.a =p.Item("id"),Key.b=p.Item("name")} Into Group Select Group(0)).ToArray().CopyToDataTable()
 
-#group by some condition , here the condition is amount column should be empty
+# group by some condition , here the condition is amount column should be empty
 (From p In DT.AsEnumerable().Where(function(x) string.IsNullOrEmpty(x("amount").ToString)) Group By x= New With { Key.a =p.Item("id"),Key.b=p.Item("name")} Into Group Select Group(0)).ToArray().CopyToDataTable()
 
 
