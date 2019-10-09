@@ -23,7 +23,7 @@ dtTesting.AsEnumerable.Sum(Function (x) If(Double.TryParse(x.item("Column2").ToS
 #  to find sum of a column without condition
 Dt.AsEnumerable().Sum(Function(x) Double.Parse(x.Item(5).ToString))
 
-#  to get dublicate
+#  to get duplicate
 datatable variable** (From p in dt.Select() where( From q in dt.Select() where string.Join(",",q.ItemArray).Equals(string.Join(",",p.ItemArray)) Select q).ToArray.Count>1 Select p).ToArray.CopyToDataTable
 
 #  Remove rows based on particular column is empty.
