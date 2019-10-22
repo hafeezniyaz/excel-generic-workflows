@@ -31,7 +31,7 @@ DataTableName.Select("Convert(column3, System.String)< >''").CopyToDataTable()
 or
 DataTableName.Select("column3< >''").CopyToDataTable()
 
-# Distinct Based on the specific column name from the data table and need to return the hole data.
+# Distinct Based on the specific column name from the data table and need to return the whole data.
 Remove Duplicate record from the Data Table based on Column Name
 dt.AsEnumerable().GroupBy(Function(i) i.Field(Of String)("ColumnName")).Select(Function(g) g.First).CopyToDataTable()
 Or
