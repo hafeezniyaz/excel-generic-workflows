@@ -98,5 +98,8 @@ row(“Amount”)=ListA(dt1.Rows.IndexOf(row)).ToString
 # group by some condition , here the condition is amount column should be empty
 (From p In DT.AsEnumerable().Where(function(x) string.IsNullOrEmpty(x("amount").ToString)) Group By x= New With { Key.a =p.Item("id"),Key.b=p.Item("name")} Into Group Select Group(0)).ToArray().CopyToDataTable()
 
+#determine .net version installed
+https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
+
 
 
